@@ -10,12 +10,17 @@ if(LLM_GREP_STATIC)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -static-libstdc++ -static-libgcc")
   endif()
 endif()
+# Abseil first
+set(ABSL_ENABLE_INSTALL ON CACHE BOOL "" FORCE)
+add_subdirectory(third_party/abseil-cpp)
+
+# RE2 next (turn off extras; it will link against Abseil we just added)
+set(RE2_BUILD_TESTING OFF CACHE BOOL "" FORCE)
+set(RE2_BUILD_BENCHMARKS OFF CACHE BOOL "" FORCE)
+add_subdirectory(third_party/re2)
 
 # llama.cpp
 add_subdirectory(third_party/llama.cpp)
-
-# RE2
-add_subdirectory(third_party/re2)
 
 # simdjson
 add_subdirectory(third_party/simdjson)
@@ -28,6 +33,8 @@ add_library(sqlite3 STATIC third_party/sqlite/sqlite3.c)
 target_include_directories(sqlite3 PUBLIC third_party/sqlite)
 
 include_directories(include)
+include_directories(include third_party/json/single_include)
+
 add_executable(llm_grep
   src/main.cpp
   src/fs_utils.cpp

@@ -1,0 +1,15 @@
+[submodule "third_party/llama.cpp"]
+	path = third_party/llama.cpp
+	url = https://github.com/ggerganov/llama.cpp
+[submodule "third_party/hnswlib"]
+	path = third_party/hnswlib
+	url = https://github.com/nmslib/hnswlib
+[submodule "third_party/re2"]
+	path = third_party/re2
+	url = https://github.com/google/re2
+[submodule "third_party/simdjson"]
+	path = third_party/simdjson
+	url = https://github.com/simdjson/simdjson
+[submodule "third_party/abseil-cpp"]
+	path = third_party/abseil-cpp
+	url = https://github.com/abseil/abseil-cpp
