@@ -13,3 +13,6 @@
 [submodule "third_party/abseil-cpp"]
 	path = third_party/abseil-cpp
 	url = https://github.com/abseil/abseil-cpp
+[submodule "third_party/json"]
+	path = third_party/json
+	url = https://github.com/nlohmann/json

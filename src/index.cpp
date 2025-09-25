@@ -53,5 +53,6 @@ std::vector<int> Index::search(const std::vector<float>& q, int k) const {
 }
 
 size_t Index::size() const {
-  return created_ ? impl_->hnsw->cur_element_count : 0;
+  return created_ ? impl_->hnsw->cur_element_count.load() : 0;
 }
+
